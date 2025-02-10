@@ -17,7 +17,10 @@ def generate_image(seed, width, height, mean, std):
         image (numpy.ndarray): The generated image.
     """
     ### START CODE HERE ###
-    ### TODO
+    np.random.seed(seed)
+    valores = np.random.normal(mean, std, (height, width))
+    valores_cinza = np.clip(valores, 0, 255).astype(np.uint8)
+    image = cv2.Mat(valores_cinza)
     ### END CODE HERE ###
 
     return image
