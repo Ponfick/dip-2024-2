@@ -15,7 +15,13 @@ def load_image_from_url(url, **kwargs):
     """
     
     ### START CODE HERE ###
-    ### TODO
+    import urllib.request as rq
+
+    response_url = rq.urlopen(url)
+    asarray = np.asarray(bytearray(response_url.read()), dtype=np.uint8)
+
+    image = cv.imdecode(asarray, **kwargs)  
+#    cv.imwrite("image.png", image)
     ### END CODE HERE ###
     
     return image
